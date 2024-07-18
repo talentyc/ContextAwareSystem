@@ -1,0 +1,126 @@
+@prefix : <https://w3id.org/aiic/semanticdigitaltwin#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix sdt: <https://w3id.org/aiic/semanticdigitaltwin#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/aiic/semanticdigitaltwin#> .
+
+<https://w3id.org/aiic/semanticdigitaltwin#> rdf:type owl:Ontology ;
+                                              owl:versionIRI <https://w3id.org/aiic/semanticdigitaltwin#/1.0> ;
+                                              owl:imports <https://w3id.org/aiic#/1.0> ,
+                                                          <https://w3id.org/aiic/Agent/Operator#/1.0> ,
+                                                          <https://w3id.org/aiic/Machine/AGV#/1.0> ,
+                                                          <https://w3id.org/aiic/Machine/Crane#/1.0> ,
+                                                          <https://w3id.org/aiic/MaterialBatch/Shipment#/1.0> ,
+                                                          <https://w3id.org/aiic/knowledgeformalization#1.0> ,
+                                                          <https://w3id.org/contextualization#/1.0> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://w3id.org/contextualization#hasAction
+<https://w3id.org/contextualization#hasAction> rdfs:domain <https://w3id.org/IndustrialSystemIntegration/ProductionProcess#OperationalTask> .
+
+
+###  https://w3id.org/contextualization#hasRelatedConstraint
+<https://w3id.org/contextualization#hasRelatedConstraint> rdfs:domain <https://w3id.org/IndustrialSystemIntegration/ProductionProcess#OperationalTask> .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://w3id.org/IndustrialSystemIntegration/Entities#Agent
+<https://w3id.org/IndustrialSystemIntegration/Entities#Agent> rdfs:subClassOf <http://www.w3.org/ns/sosa/FeatureOfInterest> .
+
+
+###  https://w3id.org/aiic#CraneWorkingSpace
+<https://w3id.org/aiic#CraneWorkingSpace> rdfs:subClassOf <https://w3id.org/aiic/knowledgeformalization#Location> .
+
+
+###  https://w3id.org/aiic#LowerLeftPoint
+<https://w3id.org/aiic#LowerLeftPoint> rdfs:subClassOf <https://w3id.org/aiic/knowledgeformalization#PointGeometry> .
+
+
+###  https://w3id.org/aiic#Origin
+<https://w3id.org/aiic#Origin> rdf:type owl:Class ;
+                               rdfs:subClassOf <https://w3id.org/aiic/knowledgeformalization#Location> .
+
+
+###  https://w3id.org/aiic#Target
+<https://w3id.org/aiic#Target> rdf:type owl:Class ;
+                               rdfs:subClassOf <https://w3id.org/aiic/knowledgeformalization#Location> .
+
+
+###  https://w3id.org/aiic#UpperRightPoint
+<https://w3id.org/aiic#UpperRightPoint> rdfs:subClassOf <https://w3id.org/aiic/knowledgeformalization#PointGeometry> .
+
+
+###  https://w3id.org/aiic/Agent/Operator#Operator
+<https://w3id.org/aiic/Agent/Operator#Operator> rdfs:subClassOf <https://w3id.org/IndustrialSystemIntegration/Entities#Agent> .
+
+
+###  https://w3id.org/aiic/Agent/Operator#Positioning
+<https://w3id.org/aiic/Agent/Operator#Positioning> rdfs:subClassOf <https://w3id.org/aiic/knowledgeformalization#SpatialPositionProperty> .
+
+
+###  https://w3id.org/aiic/Agent/Operator#Space
+<https://w3id.org/aiic/Agent/Operator#Space> rdfs:subClassOf <https://w3id.org/aiic/knowledgeformalization#Location> .
+
+
+###  https://w3id.org/aiic/Machine/AGV#AGV
+<https://w3id.org/aiic/Machine/AGV#AGV> rdfs:subClassOf <https://w3id.org/IndustrialSystemIntegration/Entities#Machine> .
+
+
+###  https://w3id.org/aiic/Machine/AGV#Orientation
+<https://w3id.org/aiic/Machine/AGV#Orientation> rdfs:subClassOf <https://w3id.org/aiic/knowledgeformalization#OrientationProperty> .
+
+
+###  https://w3id.org/aiic/Machine/AGV#Position
+<https://w3id.org/aiic/Machine/AGV#Position> rdfs:subClassOf <https://w3id.org/aiic/knowledgeformalization#SpatialPositionProperty> .
+
+
+###  https://w3id.org/aiic/Machine/Crane#Crane
+<https://w3id.org/aiic/Machine/Crane#Crane> rdfs:subClassOf <https://w3id.org/IndustrialSystemIntegration/Entities#Machine> .
+
+
+###  https://w3id.org/aiic/Machine/Crane#LoadCapability
+<https://w3id.org/aiic/Machine/Crane#LoadCapability> rdfs:subClassOf <https://w3id.org/aiic/knowledgeformalization#WeightQuantityKind> .
+
+
+###  https://w3id.org/aiic/MaterialBatch/Shipment#Height
+<https://w3id.org/aiic/MaterialBatch/Shipment#Height> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <https://w3id.org/aiic/knowledgeformalization#LengthQuantityKind> .
+
+
+###  https://w3id.org/aiic/MaterialBatch/Shipment#Length
+<https://w3id.org/aiic/MaterialBatch/Shipment#Length> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <https://w3id.org/aiic/knowledgeformalization#LengthQuantityKind> .
+
+
+###  https://w3id.org/aiic/MaterialBatch/Shipment#Shipment
+<https://w3id.org/aiic/MaterialBatch/Shipment#Shipment> rdf:type owl:Class ;
+                                                        rdfs:subClassOf <https://w3id.org/IndustrialSystemIntegration/Entities#MaterialBatch> .
+
+
+###  https://w3id.org/aiic/MaterialBatch/Shipment#Stock
+<https://w3id.org/aiic/MaterialBatch/Shipment#Stock> rdf:type owl:Class ;
+                                                     rdfs:subClassOf <https://w3id.org/aiic/knowledgeformalization#Location> .
+
+
+###  https://w3id.org/aiic/MaterialBatch/Shipment#Weight
+<https://w3id.org/aiic/MaterialBatch/Shipment#Weight> rdfs:subClassOf <https://w3id.org/aiic/knowledgeformalization#WeightQuantityKind> .
+
+
+###  https://w3id.org/aiic/MaterialBatch/Shipment#Width
+<https://w3id.org/aiic/MaterialBatch/Shipment#Width> rdfs:subClassOf <https://w3id.org/aiic/knowledgeformalization#LengthQuantityKind> .
+
+
+###  https://w3id.org/contextualization#User
+<https://w3id.org/contextualization#User> rdfs:subClassOf <https://w3id.org/IndustrialSystemIntegration/Entities#Agent> .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi

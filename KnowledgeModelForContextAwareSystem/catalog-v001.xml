@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="Imports Wizard Entry" name="https://w3id.org/contextualization#/1.0" uri="Context.ttl"/>
+    <uri id="User Entered Import Resolution" name="file:/C:/Users/VarjoPC/Desktop/SemanticDT.ttl" uri="SemanticDT.ttl"/>
+    <uri id="User Entered Import Resolution" name="file:/C:/Users/VarjoPC/Desktop/Context.ttl" uri="ContextAwarePlatform.ttl"/>
+    <uri id="User Entered Import Resolution" name="https://w3id.org/aiic/MaterialBatch/Shipment#/1.0" uri="Shipment.ttl"/>
+    <uri id="User Entered Import Resolution" name="https://w3id.org/aiic/Agent/Operator#/1.0" uri="Operator.ttl"/>
+    <uri id="User Entered Import Resolution" name="https://w3id.org/aiic/knowledgeformalization#1.0" uri="Formalization.ttl"/>
+    <uri id="User Entered Import Resolution" name="https://w3id.org/aiic/Machine/Crane#/1.0" uri="Crane.ttl"/>
+    <uri id="User Entered Import Resolution" name="https://w3id.org/aiic#/1.0" uri="AIIC.ttl"/>
+    <uri id="User Entered Import Resolution" name="https://w3id.org/aiic/Machine/AGV#/1.0" uri="AGV.ttl"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base=""/>
+</catalog>

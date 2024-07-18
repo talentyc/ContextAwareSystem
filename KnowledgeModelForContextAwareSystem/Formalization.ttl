@@ -1,0 +1,385 @@
+@prefix : <https://w3id.org/aiic/knowledgeformalization#> .
+@prefix kf: <https://w3id.org/aiic/knowledgeformalization#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://w3id.org/aiic/knowledgeformalization#> .
+
+<https://w3id.org/aiic/knowledgeformalization#> rdf:type owl:Ontology ;
+                                                 owl:versionIRI <https://w3id.org/aiic/knowledgeformalization#1.0> .
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.opengis.net/ont/geosparql#wktLiteral
+<http://www.opengis.net/ont/geosparql#wktLiteral> rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://qudt.org/schema/qudt/quantityKind
+<http://qudt.org/schema/qudt/quantityKind> rdf:type owl:ObjectProperty ;
+                                           rdfs:domain <http://qudt.org/schema/qudt/Quantity> ;
+                                           rdfs:range <http://qudt.org/schema/qudt/QuantityKind> .
+
+
+###  http://qudt.org/schema/qudt/quantityValue
+<http://qudt.org/schema/qudt/quantityValue> rdf:type owl:ObjectProperty ;
+                                            rdfs:domain <http://qudt.org/schema/qudt/Quantity> ;
+                                            rdfs:range <http://qudt.org/schema/qudt/QuantityValue> ,
+                                                       <http://www.opengis.net/ont/geosparql#Geometry> .
+
+
+###  http://qudt.org/schema/qudt/unit
+<http://qudt.org/schema/qudt/unit> rdf:type owl:ObjectProperty ;
+                                   rdfs:domain <http://qudt.org/schema/qudt/QuantityValue> ,
+                                               <http://www.w3.org/ns/sosa/Result> ;
+                                   rdfs:range <http://qudt.org/vocab/unit/Unit> .
+
+
+###  http://www.w3.org/ns/sosa/hasFeatureOfInterest
+<http://www.w3.org/ns/sosa/hasFeatureOfInterest> rdf:type owl:ObjectProperty ;
+                                                 owl:inverseOf <http://www.w3.org/ns/sosa/isFeatureOfInterestOf> ;
+                                                 rdfs:domain <http://www.w3.org/ns/sosa/Observation> ;
+                                                 rdfs:range <http://www.w3.org/ns/sosa/FeatureOfInterest> .
+
+
+###  http://www.w3.org/ns/sosa/hasResult
+<http://www.w3.org/ns/sosa/hasResult> rdf:type owl:ObjectProperty ;
+                                      rdfs:domain <http://www.w3.org/ns/sosa/Observation> ;
+                                      rdfs:range <http://www.opengis.net/ont/geosparql#Geometry> ,
+                                                 <http://www.w3.org/ns/sosa/Result> ,
+                                                 <https://w3id.org/digitalconstruction/0.5/Entities#SpatialOrientation> .
+
+
+###  http://www.w3.org/ns/sosa/isFeatureOfInterestOf
+<http://www.w3.org/ns/sosa/isFeatureOfInterestOf> rdf:type owl:ObjectProperty ;
+                                                  rdfs:domain <http://www.w3.org/ns/sosa/FeatureOfInterest> ;
+                                                  rdfs:range <http://www.w3.org/ns/sosa/Observation> .
+
+
+###  http://www.w3.org/ns/sosa/isObservedBy
+<http://www.w3.org/ns/sosa/isObservedBy> rdf:type owl:ObjectProperty ;
+                                         owl:inverseOf <http://www.w3.org/ns/sosa/observes> ;
+                                         rdfs:domain <http://www.w3.org/ns/sosa/ObservableProperty> ;
+                                         rdfs:range <http://www.w3.org/ns/sosa/Sensor> .
+
+
+###  http://www.w3.org/ns/sosa/madeBySensor
+<http://www.w3.org/ns/sosa/madeBySensor> rdf:type owl:ObjectProperty ;
+                                         owl:inverseOf <http://www.w3.org/ns/sosa/madeObservation> ;
+                                         rdfs:domain <http://www.w3.org/ns/sosa/Observation> ;
+                                         rdfs:range <http://www.w3.org/ns/sosa/Sensor> .
+
+
+###  http://www.w3.org/ns/sosa/madeObservation
+<http://www.w3.org/ns/sosa/madeObservation> rdf:type owl:ObjectProperty ;
+                                            rdfs:domain <http://www.w3.org/ns/sosa/Sensor> ;
+                                            rdfs:range <http://www.w3.org/ns/sosa/Observation> .
+
+
+###  http://www.w3.org/ns/sosa/observedProperty
+<http://www.w3.org/ns/sosa/observedProperty> rdf:type owl:ObjectProperty ;
+                                             rdfs:domain <http://www.w3.org/ns/sosa/Observation> ;
+                                             rdfs:range <http://www.w3.org/ns/sosa/ObservableProperty> .
+
+
+###  http://www.w3.org/ns/sosa/observes
+<http://www.w3.org/ns/sosa/observes> rdf:type owl:ObjectProperty ;
+                                     rdfs:domain <http://www.w3.org/ns/sosa/Sensor> ;
+                                     rdfs:range <http://www.w3.org/ns/sosa/ObservableProperty> .
+
+
+###  https://w3id.org/IndustrialSystemIntegration/Entities#hasNext
+<https://w3id.org/IndustrialSystemIntegration/Entities#hasNext> rdf:type owl:ObjectProperty ;
+                                                                rdfs:domain <https://w3id.org/IndustrialSystemIntegration/ProductionProcess#OperationalTask> ;
+                                                                rdfs:range <https://w3id.org/IndustrialSystemIntegration/ProductionProcess#OperationalTask> .
+
+
+###  https://w3id.org/IndustrialSystemIntegration/Entities#hasOperationalTask
+<https://w3id.org/IndustrialSystemIntegration/Entities#hasOperationalTask> rdf:type owl:ObjectProperty ;
+                                                                           rdfs:domain <https://w3id.org/IndustrialSystemIntegration/ProductionProcess#OperationalTask> ;
+                                                                           rdfs:range <https://w3id.org/IndustrialSystemIntegration/ProductionProcess#OperationalTask> .
+
+
+###  https://w3id.org/IndustrialSystemIntegration/ProductionProcess#hasAgent
+<https://w3id.org/IndustrialSystemIntegration/ProductionProcess#hasAgent> rdf:type owl:ObjectProperty ;
+                                                                          rdfs:domain <https://w3id.org/IndustrialSystemIntegration/ProductionProcess#OperationalTask> ;
+                                                                          rdfs:range <https://w3id.org/IndustrialSystemIntegration/Entities#Agent> .
+
+
+###  https://w3id.org/IndustrialSystemIntegration/ProductionProcess#hasMachine
+<https://w3id.org/IndustrialSystemIntegration/ProductionProcess#hasMachine> rdf:type owl:ObjectProperty ;
+                                                                            rdfs:domain <https://w3id.org/IndustrialSystemIntegration/ProductionProcess#OperationalTask> ;
+                                                                            rdfs:range <https://w3id.org/IndustrialSystemIntegration/Entities#Machine> .
+
+
+###  https://w3id.org/IndustrialSystemIntegration/ProductionProcess#hasMaterialBatch
+<https://w3id.org/IndustrialSystemIntegration/ProductionProcess#hasMaterialBatch> rdf:type owl:ObjectProperty ;
+                                                                                  rdfs:domain <https://w3id.org/IndustrialSystemIntegration/ProductionProcess#OperationalTask> ;
+                                                                                  rdfs:range <https://w3id.org/IndustrialSystemIntegration/Entities#MaterialBatch> .
+
+
+###  https://w3id.org/IndustrialSystemIntegration/ProductionProcess#hasPrevious
+<https://w3id.org/IndustrialSystemIntegration/ProductionProcess#hasPrevious> rdf:type owl:ObjectProperty ;
+                                                                             rdfs:domain <https://w3id.org/IndustrialSystemIntegration/ProductionProcess#OperationalTask> ;
+                                                                             rdfs:range <https://w3id.org/IndustrialSystemIntegration/ProductionProcess#OperationalTask> .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#hasSpatialOrientation
+<https://w3id.org/digitalconstruction/0.5/Entities#hasSpatialOrientation> rdf:type owl:ObjectProperty ;
+                                                                          rdfs:domain <https://w3id.org/digitalconstruction/0.5/Entities#CartesianPosition> ;
+                                                                          rdfs:range <https://w3id.org/digitalconstruction/0.5/Entities#SpatialOrientation> .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#hasSpatialOrigin
+<https://w3id.org/digitalconstruction/0.5/Entities#hasSpatialOrigin> rdf:type owl:ObjectProperty ;
+                                                                     rdfs:domain <https://w3id.org/digitalconstruction/0.5/Entities#CartesianPosition> ;
+                                                                     rdfs:range <https://w3id.org/digitalconstruction/0.5/Entities#SpatialOrigin> .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#hasSpatialPosition
+<https://w3id.org/digitalconstruction/0.5/Entities#hasSpatialPosition> rdf:type owl:ObjectProperty ;
+                                                                       rdfs:domain <https://w3id.org/digitalconstruction/0.5/Entities#SpatialOrigin> ;
+                                                                       rdfs:range <https://w3id.org/digitalconstruction/0.5/Entities#SpatialPosition> .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://qudt.org/schema/qudt/numericValue
+<http://qudt.org/schema/qudt/numericValue> rdf:type owl:DatatypeProperty ;
+                                           rdfs:domain <http://www.w3.org/ns/sosa/Result> .
+
+
+###  http://www.w3.org/ns/sosa/hasSimpleResult
+<http://www.w3.org/ns/sosa/hasSimpleResult> rdf:type owl:DatatypeProperty ;
+                                            rdfs:domain <http://www.w3.org/ns/sosa/Observation> ;
+                                            rdfs:range rdfs:Literal .
+
+
+###  http://www.w3.org/ns/sosa/resultTime
+<http://www.w3.org/ns/sosa/resultTime> rdf:type owl:DatatypeProperty ;
+                                       rdfs:range xsd:dateTime .
+
+
+###  https://w3id.org/IndustrialSystemIntegration/Entities#hasDescription
+<https://w3id.org/IndustrialSystemIntegration/Entities#hasDescription> rdf:type owl:DatatypeProperty ;
+                                                                       rdfs:domain <https://w3id.org/IndustrialSystemIntegration/ProductionProcess#OperationalTask> ;
+                                                                       rdfs:range rdfs:Literal .
+
+
+###  https://w3id.org/IndustrialSystemIntegration/Entities#hasEnd
+<https://w3id.org/IndustrialSystemIntegration/Entities#hasEnd> rdf:type owl:DatatypeProperty ;
+                                                               rdfs:domain <https://w3id.org/IndustrialSystemIntegration/ProductionProcess#OperationalTask> ;
+                                                               rdfs:range xsd:dateTime .
+
+
+###  https://w3id.org/IndustrialSystemIntegration/Entities#hasStart
+<https://w3id.org/IndustrialSystemIntegration/Entities#hasStart> rdf:type owl:DatatypeProperty ;
+                                                                 rdfs:domain <https://w3id.org/IndustrialSystemIntegration/ProductionProcess#OperationalTask> ;
+                                                                 rdfs:range xsd:dateTime .
+
+
+###  https://w3id.org/IndustrialSystemIntegration/Entities#hasStatus
+<https://w3id.org/IndustrialSystemIntegration/Entities#hasStatus> rdf:type owl:DatatypeProperty ;
+                                                                  rdfs:domain <https://w3id.org/IndustrialSystemIntegration/ProductionProcess#OperationalTask> ;
+                                                                  rdfs:range rdfs:Literal .
+
+
+###  https://w3id.org/aiic/knowledgeformalization#hasId
+kf:hasId rdf:type owl:DatatypeProperty ;
+         rdfs:domain <https://w3id.org/IndustrialSystemIntegration/ProductionProcess#OperationalTask> ;
+         rdfs:range rdfs:Literal .
+
+
+###  https://w3id.org/aiic/knowledgeformalization#hasX
+kf:hasX rdf:type owl:DatatypeProperty ;
+        rdfs:domain <https://w3id.org/digitalconstruction/0.5/Entities#CartesianPosition> ;
+        rdfs:range xsd:double .
+
+
+###  https://w3id.org/aiic/knowledgeformalization#hasY
+kf:hasY rdf:type owl:DatatypeProperty ;
+        rdfs:domain <https://w3id.org/digitalconstruction/0.5/Entities#CartesianPosition> ;
+        rdfs:range xsd:double .
+
+
+###  https://w3id.org/aiic/knowledgeformalization#hasZ
+kf:hasZ rdf:type owl:DatatypeProperty ;
+        rdfs:domain <https://w3id.org/digitalconstruction/0.5/Entities#CartesianPosition> ;
+        rdfs:range xsd:double .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#hasYaw
+<https://w3id.org/digitalconstruction/0.5/Entities#hasYaw> rdf:type owl:DatatypeProperty ;
+                                                           rdfs:domain <https://w3id.org/digitalconstruction/0.5/Entities#OneAngleOrientation> ;
+                                                           rdfs:range xsd:double .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://qudt.org/schema/qudt/Quantity
+<http://qudt.org/schema/qudt/Quantity> rdf:type owl:Class .
+
+
+###  http://qudt.org/schema/qudt/QuantityKind
+<http://qudt.org/schema/qudt/QuantityKind> rdf:type owl:Class .
+
+
+###  http://qudt.org/schema/qudt/QuantityValue
+<http://qudt.org/schema/qudt/QuantityValue> rdf:type owl:Class .
+
+
+###  http://qudt.org/vocab/unit/Unit
+<http://qudt.org/vocab/unit/Unit> rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/geosparql#Geometry
+<http://www.opengis.net/ont/geosparql#Geometry> rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/sf#Point
+<http://www.opengis.net/ont/sf#Point> rdf:type owl:Class .
+
+
+###  http://www.opengis.net/ont/sf#Polygon
+<http://www.opengis.net/ont/sf#Polygon> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/sosa/FeatureOfInterest
+<http://www.w3.org/ns/sosa/FeatureOfInterest> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/sosa/ObservableProperty
+<http://www.w3.org/ns/sosa/ObservableProperty> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/sosa/Observation
+<http://www.w3.org/ns/sosa/Observation> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/sosa/Result
+<http://www.w3.org/ns/sosa/Result> rdf:type owl:Class .
+
+
+###  http://www.w3.org/ns/sosa/Sensor
+<http://www.w3.org/ns/sosa/Sensor> rdf:type owl:Class ;
+                                   rdfs:subClassOf <http://www.w3.org/ns/ssn/System> .
+
+
+###  http://www.w3.org/ns/ssn/System
+<http://www.w3.org/ns/ssn/System> rdf:type owl:Class .
+
+
+###  https://w3id.org/IndustrialSystemIntegration/Entities#Agent
+<https://w3id.org/IndustrialSystemIntegration/Entities#Agent> rdf:type owl:Class .
+
+
+###  https://w3id.org/IndustrialSystemIntegration/Entities#Machine
+<https://w3id.org/IndustrialSystemIntegration/Entities#Machine> rdf:type owl:Class .
+
+
+###  https://w3id.org/IndustrialSystemIntegration/Entities#MaterialBatch
+<https://w3id.org/IndustrialSystemIntegration/Entities#MaterialBatch> rdf:type owl:Class .
+
+
+###  https://w3id.org/IndustrialSystemIntegration/ProductionProcess#OperationalTask
+<https://w3id.org/IndustrialSystemIntegration/ProductionProcess#OperationalTask> rdf:type owl:Class .
+
+
+###  https://w3id.org/aiic/knowledgeformalization#CVPeopleNumObservation
+kf:CVPeopleNumObservation rdf:type owl:Class ;
+                          rdfs:subClassOf <http://www.w3.org/ns/sosa/Observation> .
+
+
+###  https://w3id.org/aiic/knowledgeformalization#HeightQuantityKind
+kf:HeightQuantityKind rdf:type owl:Class ;
+                      rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityKind> .
+
+
+###  https://w3id.org/aiic/knowledgeformalization#LengthQuantityKind
+kf:LengthQuantityKind rdf:type owl:Class ;
+                      rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityKind> .
+
+
+###  https://w3id.org/aiic/knowledgeformalization#Location
+kf:Location rdf:type owl:Class ;
+            rdfs:subClassOf <https://w3id.org/bot#Space> .
+
+
+###  https://w3id.org/aiic/knowledgeformalization#OrientationObservation
+kf:OrientationObservation rdf:type owl:Class ;
+                          rdfs:subClassOf <http://www.w3.org/ns/sosa/Observation> .
+
+
+###  https://w3id.org/aiic/knowledgeformalization#OrientationProperty
+kf:OrientationProperty rdf:type owl:Class ;
+                       rdfs:subClassOf <http://www.w3.org/ns/sosa/ObservableProperty> .
+
+
+###  https://w3id.org/aiic/knowledgeformalization#PointGeometry
+kf:PointGeometry rdf:type owl:Class ;
+                 rdfs:subClassOf <http://www.opengis.net/ont/sf#Point> .
+
+
+###  https://w3id.org/aiic/knowledgeformalization#SafetyDistanceObeservation
+kf:SafetyDistanceObeservation rdf:type owl:Class ;
+                              rdfs:subClassOf <http://www.w3.org/ns/sosa/Observation> .
+
+
+###  https://w3id.org/aiic/knowledgeformalization#SpatialPositionObservation
+kf:SpatialPositionObservation rdf:type owl:Class ;
+                              rdfs:subClassOf <http://www.w3.org/ns/sosa/Observation> .
+
+
+###  https://w3id.org/aiic/knowledgeformalization#SpatialPositionProperty
+kf:SpatialPositionProperty rdf:type owl:Class ;
+                           rdfs:subClassOf <http://www.w3.org/ns/sosa/ObservableProperty> .
+
+
+###  https://w3id.org/aiic/knowledgeformalization#WeightQuantityKind
+kf:WeightQuantityKind rdf:type owl:Class ;
+                      rdfs:subClassOf <http://qudt.org/schema/qudt/QuantityKind> .
+
+
+###  https://w3id.org/bot#Space
+<https://w3id.org/bot#Space> rdf:type owl:Class ;
+                             rdfs:subClassOf <https://w3id.org/bot#Zone> .
+
+
+###  https://w3id.org/bot#Zone
+<https://w3id.org/bot#Zone> rdf:type owl:Class .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#CartesianPosition
+<https://w3id.org/digitalconstruction/0.5/Entities#CartesianPosition> rdf:type owl:Class ;
+                                                                      rdfs:subClassOf <https://w3id.org/digitalconstruction/0.5/Entities#SpatialPosition> .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#OneAngleOrientation
+<https://w3id.org/digitalconstruction/0.5/Entities#OneAngleOrientation> rdf:type owl:Class ;
+                                                                        rdfs:subClassOf <https://w3id.org/digitalconstruction/0.5/Entities#SpatialOrientation> .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#SpatialOrientation
+<https://w3id.org/digitalconstruction/0.5/Entities#SpatialOrientation> rdf:type owl:Class .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#SpatialOrigin
+<https://w3id.org/digitalconstruction/0.5/Entities#SpatialOrigin> rdf:type owl:Class .
+
+
+###  https://w3id.org/digitalconstruction/0.5/Entities#SpatialPosition
+<https://w3id.org/digitalconstruction/0.5/Entities#SpatialPosition> rdf:type owl:Class .
+
+
+###  Generated by the OWL API (version 4.5.26.2023-07-17T20:34:13Z) https://github.com/owlcs/owlapi
